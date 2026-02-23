@@ -1,1 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P1 | Production Overview Dashboard | Asger Villadsen</title>
+  <style>
+    :root {
+      --bg-1: #0f1117;
+      --bg-2: #171b24;
+      --panel: #1b2230;
+      --panel-border: rgba(255,255,255,0.08);
+      --text: #f5f7fb;
+      --muted: #b8c0d4;
+      --accent: #dce7ff;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      --radius: 14px;
+    }
 
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(90, 101, 255, 0.14), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(0, 212, 170, 0.10), transparent 45%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+      background-attachment: fixed;
+    }
+
+    .wrapper {
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      padding: 1.2rem 0 3rem;
+    }
+
+    .topbar {
+      margin-bottom: 1rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      color: var(--accent);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.92rem;
+      transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: #0d111a;
+    }
+
+    .hero-content {
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.5vw, 2rem);
+      letter-spacing: 0.02em;
+    }
+
+    .hero p {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      margin-top: 1rem;
+    }
+
+    .section h2 {
+      margin: 0 0 0.7rem;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #eef2fb;
+    }
+
+    .section p {
+      margin: 0.55rem 0;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .section ul, .section ol {
+      margin: 0.35rem 0 0.2rem 1.1rem;
+      color: var(--text);
+      line-height: 1.65;
+      padding: 0;
+    }
+
+    .section li { margin: 0.3rem 0; }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    footer {
+      margin-top: 1.4rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .section, .hero-content {
+        padding: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="topbar">
+      <a class="back-button" href="../prod-projects.html">← Back to Production & Manufacturing Projects</a>
+    </div>
+
+    <article>
+      <section class="hero">
+        <!-- Replace with your real thumbnail/screenshot path -->
+        <img
+          class="hero-image"
+          src="../assets/p1-thumbnail.png"
+          alt="Production Overview Dashboard screenshot"
+        />
+        <div class="hero-content">
+          <h1>Production Overview Dashboard & Traceability System</h1>
+          <p>
+            A production tracking and traceability solution with QR-based registration and test-stage logging,
+            built to create visibility into production flow, test performance, and product status.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Problem</h2>
+        <p>
+          We had no reliable way to see how many products were being produced, where each product was in the
+          production/test flow, how products were failing, or to trace a product through its test history.
+        </p>
+        <p>
+          This made it difficult to monitor production progress, identify bottlenecks, and analyze yield performance.
+          It also reduced our ability to quickly investigate the history of a specific product when problems occurred.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Solution</h2>
+        <p>
+          I implemented a traceability and test-stage tracking system where production workers register and track
+          products using QR codes. After each test stage, the product is scanned and the test result is logged.
+        </p>
+        <p>
+          This created a structured history per serial number and enabled a production overview dashboard with real-time
+          visibility into product progress, test outcomes, and production output.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>How It Worked</h2>
+        <ol>
+          <li>Product is registered and linked to a serial number / QR code.</li>
+          <li>Operator scans the product after each test stage.</li>
+          <li>Test stage and result are logged in the system.</li>
+          <li>Serial number can be searched to view full test history and current stage.</li>
+          <li>Dashboard aggregates data into production and yield overview metrics.</li>
+        </ol>
+      </section>
+
+      <div class="grid-2">
+        <section class="section">
+          <h2>Tools Used</h2>
+          <ul>
+            <li>QR code-based product tracking</li>
+            <li>Serial number traceability workflow</li>
+            <li>Test-stage result logging</li>
+            <li>Production dashboard / data visualization</li>
+            <li>Yield reporting (1st / 2nd / 3rd pass yield)</li>
+          </ul>
+          <p class="muted">
+            Replace this list with your exact tools/software stack later.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Results</h2>
+          <ul>
+            <li>Improved visibility of work-in-progress products</li>
+            <li>Enabled serial-number traceability across test stages</li>
+            <li>Made test failures easier to analyze</li>
+            <li>Provided daily output overview</li>
+            <li>Enabled yield monitoring (1st, 2nd, 3rd pass)</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="section">
+        <h2>Impact</h2>
+        <p>
+          The system made production status and test progression visible and searchable, improving day-to-day overview
+          and making it easier to understand output and performance. It also created a foundation for more structured
+          production analysis and traceability going forward.
+        </p>
+      </section>
+    </article>
+
+    <footer>
+      © 2026 Asger Villadsen
+    </footer>
+  </div>
+</body>
+</html>
